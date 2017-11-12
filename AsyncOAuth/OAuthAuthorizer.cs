@@ -47,6 +47,15 @@ namespace AsyncOAuth
             return authUrl + "?oauth_token=" + requestToken.Key;
         }
 
+        public string BuildAuthorizeUrl(string authUrl, RequestToken requestToken, string callbackUrl)
+        {
+            Precondition.NotNull(authUrl, "authUrl");
+            Precondition.NotNull(requestToken, "requestToken");
+            Precondition.NotNull(callbackUrl, "callbackUrl");
+
+            return string.Format("{0}?oauth_token={1}&oauth_callback={2}", authUrl, requestToken.Key, callbackUrl);
+        }
+
         /// <summary>asynchronus get RequestToken</summary>
         public Task<TokenResponse<RequestToken>> GetRequestToken(string requestTokenUrl, IEnumerable<KeyValuePair<string, string>> parameters = null, HttpContent postValue = null)
         {
