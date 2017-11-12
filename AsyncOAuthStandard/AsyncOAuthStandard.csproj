@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>AsyncOAuth.Standard</AssemblyName>
+    <RootNamespace>AsyncOAuth</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\AsyncOAuth\Internal\Precondition.cs" Link="Internal\Precondition.cs" />
+    <Compile Include="..\AsyncOAuth\Internal\Utility.cs" Link="Internal\Utility.cs" />
+    <Compile Include="..\AsyncOAuth\OAuthAuthorizer.cs" Link="OAuthAuthorizer.cs" />
+    <Compile Include="..\AsyncOAuth\OAuthMessageHandler.cs" Link="OAuthMessageHandler.cs" />
+    <Compile Include="..\AsyncOAuth\OAuthUtility.cs" Link="OAuthUtility.cs" />
+    <Compile Include="..\AsyncOAuth\Token.cs" Link="Token.cs" />
+    <Compile Include="..\AsyncOAuth\TokenResponse.cs" Link="TokenResponse.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Internal\" />
+  </ItemGroup>
+
+</Project>
