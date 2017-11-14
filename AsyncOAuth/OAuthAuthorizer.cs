@@ -66,6 +66,17 @@ namespace AsyncOAuth
         }
 
         /// <summary>asynchronus get GetAccessToken</summary>
+        public Task<TokenResponse<AccessToken>> GetAccessToken(string accessTokenUrl, RequestToken requestToken, IEnumerable<KeyValuePair<string, string>> parameters = null, HttpContent postValue = null)
+        {
+            Precondition.NotNull(accessTokenUrl, "accessTokenUrl");
+            Precondition.NotNull(requestToken, "requestToken");
+
+            if (parameters == null) parameters = Enumerable.Empty<KeyValuePair<string, string>>();
+            var handler = new OAuthMessageHandler(consumerKey, consumerSecret, token: requestToken, optionalOAuthHeaderParameters: parameters);
+
+            return GetTokenResponse(accessTokenUrl, handler, postValue, (key, secret) => new AccessToken(key, secret));
+        }
+
         public Task<TokenResponse<AccessToken>> GetAccessToken(string accessTokenUrl, RequestToken requestToken, string verifier, IEnumerable<KeyValuePair<string, string>> parameters = null, HttpContent postValue = null)
         {
             Precondition.NotNull(accessTokenUrl, "accessTokenUrl");
